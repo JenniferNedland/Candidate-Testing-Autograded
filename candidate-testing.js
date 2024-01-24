@@ -9,12 +9,13 @@ let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
 function askForName() {
-  candidateName = input.question("Please enter your name. ");
+  candidateName = input.question("Please enter your name: \n" );
+  console.log(`\nHello, ${candidateName}. Please answer these ${questions.length} questions.`);
 }
 
 function askQuestion() {
   for (let i = 0; i < questions.length; i++) {
-    candidateAnswers.push(input.question("\n" + [i + 1] + "." + questions[i] + "\n"));
+    candidateAnswers.push(input.question("\n" + [i + 1] + ". " + questions[i] + "\n"));
   }
 }
 
@@ -33,14 +34,12 @@ function gradeQuiz(candidateAnswers) {
   let grade = (numCorrectAnswers/questions.length) * 100;
   let didPass = grade >= 80;  
 
-
   console.log(`${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}%. You needed a minimum of 80% to pass.`);
   return grade;
 }
 
 function runProgram() {
   askForName();
-  console.log("Hello, " + candidateName + "!\n");
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
