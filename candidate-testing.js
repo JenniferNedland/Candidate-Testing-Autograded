@@ -20,29 +20,21 @@ function askQuestion() {
 
 function gradeQuiz(candidateAnswers) {
 
-  let grade = 0;
   let numCorrectAnswers = 0;
-  let isCorrect = false;
-  let didPass = false;
-  
+
   console.log("\nQUIZ RESULTS:\n");
   
   for (let i = 0; i < correctAnswers.length; i++) {
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
-      isCorrect = true;
-    }
+    let isCorrect = candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase();
     numCorrectAnswers += isCorrect;
     console.log(`${i + 1}. ${(isCorrect ? ("CORRECT") : ("INCORRECT"))}. You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}.\n`);
-    isCorrect = false;
   }
   
-  grade = (numCorrectAnswers/questions.length) * 100;
-  console.log(grade);
-    if (grade >= 80) {
-      didPass = true; 
-      console.log(`${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}%. You needed a minimum of 80% to pass.`)
-  }
+  let grade = (numCorrectAnswers/questions.length) * 100;
+  let didPass = grade >= 80;  
 
+
+  console.log(`${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}%. You needed a minimum of 80% to pass.`);
   return grade;
 }
 
