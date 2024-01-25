@@ -34,7 +34,7 @@ function gradeQuiz(candidateAnswers) {
   let grade = Math.trunc((numCorrectAnswers/questions.length) * 100);
   let didPass = grade >= 80;  
 
-  console.log(`${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}%. You needed a minimum of 80% to pass.`);
+  console.log(`${(didPass ? "Congratulations," : "Unfortunately,")} ${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}% and needed a minimum of 80% to pass.`);
   return grade;
 }
 
