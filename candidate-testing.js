@@ -28,10 +28,10 @@ function gradeQuiz(candidateAnswers) {
   for (let i = 0; i < correctAnswers.length; i++) {
     let isCorrect = candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase();
     numCorrectAnswers += isCorrect;
-    console.log(`${i + 1}. ${(isCorrect ? ("CORRECT") : ("INCORRECT"))}. You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}.\n`);
+    console.log(`${i + 1}. ${(isCorrect ? ("") : ("IN"))}CORRECT. You answered ${candidateAnswers[i]}. The correct answer is ${correctAnswers[i]}.\n`);
   }
   
-  let grade = (numCorrectAnswers/questions.length) * 100;
+  let grade = Math.trunc((numCorrectAnswers/questions.length) * 100);
   let didPass = grade >= 80;  
 
   console.log(`${candidateName}, you ${(didPass ? ("PASSED") : ("FAILED"))}. You scored ${grade}%. You needed a minimum of 80% to pass.`);
